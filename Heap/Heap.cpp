@@ -1,18 +1,15 @@
-// Heap.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
 #include <iostream>
 #include <math.h> 
 using namespace std;
-
+ 
 int heapSize, length, largest;
 int left(int i)
 {
-    return 2 * i;
+    return (2 * i) + 1;
 }
 int right(int i)
 {
-    return (2 * i) + 1;
+    return (2 * i) + 2;
 }
 
 void heapify(int arr[], int i)
@@ -52,7 +49,7 @@ void buildHeap(int arr[], int length)
 void heapSort(int arr[])
 {
     buildHeap(arr, heapSize);
-    for (int i = heapSize; i > 0; i--)
+    for (int i = heapSize; i >= 1; i--)
     {
         int temp = arr[0];
         arr[0] = arr[i];
@@ -63,20 +60,41 @@ void heapSort(int arr[])
 }
 int main()
 {
-
-    int arrayOfNumbers[] = { 17,9,5,21,23,14,11,8,3};
+    cout << "Array { 4, 1, 3, 2, 16, 9, 10, 14, 8, 7}";
+    int arrayOfNumbers[] = { 4, 1, 3, 2, 16, 9, 10, 14, 8, 7 };
     int n = sizeof(arrayOfNumbers) / sizeof(arrayOfNumbers[0]);
     int length = n - 1;
     buildHeap(arrayOfNumbers, length);
     cout << "\n";
+    cout << "buildHeap: ";
     for (int i = 0; i < n; i++)
     {
         cout << arrayOfNumbers[i] << " ";
     }
     heapSort(arrayOfNumbers);
     cout << "\n";
+    cout << "heapSort: ";
     for (int i = 0; i < n; i++)
     {
         cout << arrayOfNumbers[i] << " ";
+    }
+    cout << "\n- - - - -";
+    cout << "\nArray { 13, 2, 91, 102, 12, 87, 45, 39, 27, 55, 42, 11, 3, 18, 64, 75, 51}";
+    int arrayOfNumbers1[] = { 13, 2, 91, 102, 12, 87, 45, 39, 27, 55, 42, 11, 3, 18, 64, 75, 51 };
+    n = sizeof(arrayOfNumbers1) / sizeof(arrayOfNumbers1[0]);
+    length = n - 1;
+    buildHeap(arrayOfNumbers1, length);
+    cout << "\n";
+    cout << "buildHeap: ";
+    for (int i = 0; i < n; i++)
+    {
+        cout << arrayOfNumbers1[i] << " ";
+    }
+    heapSort(arrayOfNumbers1);
+    cout << "\n";
+    cout << "heapSort: ";
+    for (int i = 0; i < n; i++)
+    {
+        cout << arrayOfNumbers1[i] << " ";
     }
 }
